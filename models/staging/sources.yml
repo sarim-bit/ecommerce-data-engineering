@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: olist_raw
+    description: "Raw Brazilian E-commerce dataset (Olist) sourced from Kaggle. Data is stored as static CSV snapshots in Snowflake."
+    database: OLIST_RAW
+    schema: PUBLIC
+    tables:
+      - name: orders
+        description: "Raw order header data containing lifecycle timestamps."
+      - name: order_payments
+        description: "Transaction-level payment data including methods and values."
+      - name: order_items
+        description: "Line-item level details linking orders to products and sellers."
+      - name: customers
+        description: "Customer demographic data and unique identifiers."
+      - name: products
+        description: "Product dimensions and category names."
+      - name: sellers
+        description: "Seller location and identification data."
+      - name: order_reviews
+        description: "Customer feedback and satisfaction scores."
+      - name: product_category_name_translation
+        description: "Lookup table for Portuguese to English category names."

@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: int_order_summaries
+    description: >
+      This model joins staging orders with aggregated payment data. 
+      It serves as the foundation for financial and customer analysis by 
+      providing a single 'Total Order Value' for every order, regardless 
+      of the number of payment methods used.
+    columns:
+      - name: order_id
+        description: "Primary key for the order."
+        tests:
+          - unique
+          - not_null
+      - name: total_order_value
+        description: "The sum of all payments associated with this order ID."
+
+  - name: int_order_delivery_performance
+    description: >
+      Calculates key logistics KPIs by comparing actual delivery dates 
+      against customer-facing estimates. This model is used to identify 
+      bottlenecks in the shipping process.
+    columns:
+      - name: actual_delivery_time
+        description: "The number of days between the purchase and the customer receiving the goods."
+      - name: delivery_delay
+        description: "The difference in days between the estimated delivery and actual delivery. Positive numbers indicate a late delivery."
+      - name: is_late_delivery
+        description: "Binary flag (1 = Late, 0 = On Time/Early)."

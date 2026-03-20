@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: fct_customer_rfm
+    description: "Customer segmentation using the RFM (Recency, Frequency, Monetary) model. Used by Marketing to identify high-value vs. at-risk customers."
+    columns:
+      - name: customer_unique_id
+        description: "The primary identifier for the customer across multiple orders."
+        tests:
+          - unique
+          - not_null
+      - name: customer_segment
+        description: "The business label (e.g., Champions, Loyal) based on their RFM scores."
+
+  - name: fct_monthly_revenue_growth
+    description: "Financial reporting table showing Month-over-Month (MoM) revenue growth for delivered orders."
+    columns:
+      - name: order_month
+        description: "The first day of the month for the given period."
+      - name: mom_growth_pct
+        description: "Percentage increase or decrease in revenue compared to the previous month."
